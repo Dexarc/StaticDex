@@ -36,60 +36,99 @@
               0% { opacity: 0; }
               100% { opacity: 1; }
           }
-          /* Firefly Styles */
-          .firefly {
-              position: absolute;
-              width: 10px; /* Size of the firefly */
-              height: 10px; /* Size of the firefly */
-              background: yellow; /* Color of the firefly */
-              border-radius: 50%; /* Makes the firefly a circle */
-              opacity: 0.6; /* Slight transparency */
-              box-shadow: 0 0 10px 5px rgb(217, 223, 140); /* Glowing effect of shadow */
-          }
+
       </style>
   </head>
   <body>
       <img src="/assets/bg.jpg" alt="Background" />
-      <div class="firefly"></div> <!-- Firefly element -->
+
 
       <script>
         
-        const firefly = document.querySelector('.firefly') as HTMLDivElement
+        const fireflyStyle = document.createElement('style');
+        fireflyStyle.textContent = `
+            .firefly {
+                position: absolute;
+                width: 10px; /* Size of the firefly */
+                height: 10px; /* Size of the firefly */
+                background: yellow; /* Color of the firefly */
+                border-radius: 50%; /* Makes the firefly a circle */
+                opacity: 0.6; /* Slight transparency */
+                box-shadow: 0 0 10px 5px rgb(217, 223, 140); /* Glowing effect of shadow */
+            }
+        `;
+
+        document.head.appendChild(fireflyStyle);
+        const fireflyCount = 10;
+        const fireflyArray: {
+            element: HTMLDivElement; 
+            positionX: number; 
+            positionY: number; 
+            speedX: number; 
+            speedY: number; 
+        }[] = [];
+
+        // const firefly = document.querySelector('.firefly') as HTMLDivElement
         const fireflySize = 10;
 
-        // Initial position
-        let positionX = Math.random() * (window.innerWidth - fireflySize); // Ensure initial position is within bounds
-        let positionY = Math.random() * (window.innerHeight - fireflySize); // Ensure initial position is within bounds
+        // // Initial position
+        // let positionX = Math.random() * (window.innerWidth - fireflySize); // Ensure initial position is within bounds
+        // let positionY = Math.random() * (window.innerHeight - fireflySize); // Ensure initial position is within bounds
         
-        // Speed calculation
-        let speedX = (Math.random() - 0.5) * 3; // Random speed for x-direction
-        let speedY = (Math.random() - 0.5) * 3; // Random speed for y-direction
+        // // Speed calculation
+        // let speedX = (Math.random() - 0.5) * 3; // Random speed for x-direction
+        // let speedY = (Math.random() - 0.5) * 3; // Random speed for y-direction
+        for (let i = 0; i < fireflyCount; i++){
+            const firefly = document.createElement('div');
+            firefly.className = 'firefly';
+            document.body.appendChild(firefly);
+         
+            // Random initial position
+            const positionX = Math.random() * (window.innerWidth - fireflySize);
+            const positionY = Math.random() * (window.innerHeight - fireflySize);
 
-        function moveFirefly(){  
-            positionX += speedX;
-            positionY += speedY;
-
-            if (positionX <= 0 || positionX >= window.innerWidth - fireflySize ){
-                speedX = -speedX; //reverse the position
-                positionX = Math.max(0, Math.min(positionX, window.innerWidth - fireflySize));
-            }
-
-            if (positionY <= 0 || positionY >= window.innerHeight - fireflySize ){
-                speedY = -speedY; //reverse the position
-                positionY = Math.max(0, Math.min(positionY, window.innerHeight - fireflySize));
-            }
-
-            // Apply the new position
+            // Set initial CSS position
             firefly.style.left = `${positionX}px`;
             firefly.style.top = `${positionY}px`;
 
-            // Generate a random change every 50 frames
-            if( Math.random() < 0.02){
-                speedX = (Math.random() - 0.5) * 4; 
-                speedY = (Math.random() - 0.5) * 4;
+            fireflyArray.push({
+                element: firefly,
+                positionX: positionX,
+                positionY: positionY,
+                speedX: (Math.random() - 0.5) * 3, // Random speed for x-direction
+                speedY: (Math.random() - 0.5) * 3  // Random speed for y-direction
+            });
+
+    }
+    // console.log("Final DOM structure:");
+    // console.log(document.documentElement.outerHTML);
+
+        function moveFirefly(){  
+            fireflyArray.forEach(j => {
+            j.positionX += j.speedX;
+            j.positionY += j.speedY;
+
+            if (j.positionX <= 0 || j.positionX >= window.innerWidth - fireflySize ){
+                j.speedX = -j.speedX; //reverse the position
+                j.positionX = Math.max(0, Math.min(j.positionX, window.innerWidth - fireflySize));
             }
 
+            if (j.positionY <= 0 || j.positionY >= window.innerHeight - fireflySize ){
+                j.speedY = -j.speedY; //reverse the position
+                j.positionY = Math.max(0, Math.min(j.positionY, window.innerHeight - fireflySize));
+            }
 
+            // Apply the new position
+            j.element.style.left = `${j.positionX}px`;
+            j.element.style.top = `${j.positionY}px`;
+
+            // Generate a random change every 50 frames
+            if( Math.random() < 0.02){
+                j.speedX = (Math.random() - 0.5) * 4; 
+                j.speedY = (Math.random() - 0.5) * 4;
+            }
+
+            });
             // Request the next animation frame
             requestAnimationFrame(moveFirefly);
           }
