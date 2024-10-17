@@ -20,7 +20,7 @@
         `;document.head.appendChild(d);const a=10,r=[],i=10;for(let e=0;e<a;e++){const t=document.createElement("div");t.className="firefly",document.body.appendChild(t);const n=Math.random()*(window.innerWidth-i),s=Math.random()*(window.innerHeight-i);t.style.left=`${n}px`,t.style.top=`${s}px`,r.push({element:t,positionX:n,positionY:s,speedX:(Math.random()-.5)*3,speedY:(Math.random()-.5)*3})}function o(){r.forEach(e=>{e.positionX+=e.speedX,e.positionY+=e.speedY,(e.positionX<=0||e.positionX>=window.innerWidth-i)&&(e.speedX=-e.speedX,e.positionX=Math.max(0,Math.min(e.positionX,window.innerWidth-i))),(e.positionY<=0||e.positionY>=window.innerHeight-i)&&(e.speedY=-e.speedY,e.positionY=Math.max(0,Math.min(e.positionY,window.innerHeight-i))),e.element.style.left=`${e.positionX}px`,e.element.style.top=`${e.positionY}px`,Math.random()<.02&&(e.speedX=(Math.random()-.5)*4,e.speedY=(Math.random()-.5)*4)}),requestAnimationFrame(o)}o();window.addEventListener("resize",o);
 </script></head>
   <body class="astro-J7PV25F6">
-      <img src="/assets/bg.jpg" alt="Background" class="astro-J7PV25F6">
+      <img src="StaticDex/assets/bg.jpg" alt="Background" class="astro-J7PV25F6">
 
 
       
