@@ -7,17 +7,17 @@
     <meta name="generator" content="Astro v2.10.15">
     <title>Night with Fireflies</title>
     
-<link rel="stylesheet" href="/StaticDex/_astro/index.2d6cb5c6.css" /><script type="module">const d=document.createElement("style");d.textContent=`
+<link rel="stylesheet" href="/StaticDex/_astro/index.6f5ccdb6.css" /><script type="module">const d=document.createElement("style");d.textContent=`
         .firefly {
             position: absolute;
             width: 4px;
             height: 4px;
             background: yellow;
             border-radius: 50%;
-            opacity: 0.5;
+            opacity: 1;
             box-shadow: 0 0 10px 5px rgb(217, 223, 140);
         }
-    `;document.head.appendChild(d);const a=20,p=[],i=4;for(let e=0;e<a;e++){const t=document.createElement("div");t.className="firefly",document.body.appendChild(t);const n=Math.random()*(window.innerWidth-i),s=Math.random()*(window.innerHeight-i);t.style.left=`${n}px`,t.style.top=`${s}px`,p.push({element:t,positionX:n,positionY:s,speedX:(Math.random()-.5)*3,speedY:(Math.random()-.5)*3})}function o(){p.forEach(e=>{e.positionX+=e.speedX,e.positionY+=e.speedY,(e.positionX<=0||e.positionX>=window.innerWidth-i)&&(e.speedX=-e.speedX,e.positionX=Math.max(0,Math.min(e.positionX,window.innerWidth-i))),(e.positionY<=0||e.positionY>=window.innerHeight-i)&&(e.speedY=-e.speedY,e.positionY=Math.max(0,Math.min(e.positionY,window.innerHeight-i))),e.element.style.left=`${e.positionX}px`,e.element.style.top=`${e.positionY}px`,Math.random()<.02&&(e.speedX=(Math.random()-.5)*4,e.speedY=(Math.random()-.5)*4)}),requestAnimationFrame(o)}o();window.addEventListener("resize",o);
+    `;document.head.appendChild(d);const a=10,p=[],i=4;for(let e=0;e<a;e++){const t=document.createElement("div");t.className="firefly",document.body.appendChild(t);const n=Math.random()*(window.innerWidth-i),s=Math.random()*(window.innerHeight-i);t.style.left=`${n}px`,t.style.top=`${s}px`,p.push({element:t,positionX:n,positionY:s,speedX:(Math.random()-.5)*3,speedY:(Math.random()-.5)*3})}function o(){p.forEach(e=>{e.positionX+=e.speedX,e.positionY+=e.speedY,(e.positionX<=0||e.positionX>=window.innerWidth-i)&&(e.speedX=-e.speedX,e.positionX=Math.max(0,Math.min(e.positionX,window.innerWidth-i))),(e.positionY<=0||e.positionY>=window.innerHeight-i)&&(e.speedY=-e.speedY,e.positionY=Math.max(0,Math.min(e.positionY,window.innerHeight-i))),e.element.style.left=`${e.positionX}px`,e.element.style.top=`${e.positionY}px`,Math.random()<.02&&(e.speedX=(Math.random()-.5)*4,e.speedY=(Math.random()-.5)*4)}),requestAnimationFrame(o)}o();window.addEventListener("resize",o);
 </script></head>
 <body class="fade-background astro-37FXCHFA">
     
