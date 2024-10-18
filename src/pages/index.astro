@@ -48,17 +48,17 @@
         fireflyStyle.textContent = `
             .firefly {
                 position: absolute;
-                width: 10px; /* Size of the firefly */
-                height: 10px; /* Size of the firefly */
+                width: 4px; /* Size of the firefly */
+                height: 4px; /* Size of the firefly */
                 background: yellow; /* Color of the firefly */
                 border-radius: 50%; /* Makes the firefly a circle */
-                opacity: 0.6; /* Slight transparency */
+                opacity: 0.5; /* Slight transparency */
                 box-shadow: 0 0 10px 5px rgb(217, 223, 140); /* Glowing effect of shadow */
             }
         `;
 
         document.head.appendChild(fireflyStyle);
-        const fireflyCount = 10;
+        const fireflyCount = 30;
         const fireflyArray: {
             element: HTMLDivElement; 
             positionX: number; 
