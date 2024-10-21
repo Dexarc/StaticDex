@@ -10,8 +10,22 @@
             height: 4px;
             background: yellow;
             border-radius: 50%;
-            opacity: 1;
+            opacity: 0;
             box-shadow: 0 0 10px 5px rgb(217, 223, 140);
+            animation: flicker 2s infinite ease-in;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 0.2; }
+            10% { opacity: 1; }
+            20% { opacity: 0.4; }
+            30% { opacity: 1; }
+            40% { opacity: 0.2; }
+            50% { opacity: 0.9; }
+            60% { opacity: 0; }
+            70% { opacity: 1; }
+            80% { opacity: 0.5; }
+            90% { opacity: 1; }
         }
     `;
     document.head.appendChild(fireflyStyle);
@@ -20,10 +34,10 @@
     const fireflyArray = [];
     const fireflySize = 4;
 
-    for (let i = 0; i < fireflyCount; i++){
+    for (let i = 0; i < fireflyCount; i++) {
         const firefly = document.createElement('div');
         firefly.className = 'firefly';
-        document.body.appendChild(firefly);
+        document.querySelector('.firefly-container').appendChild(firefly);
      
         const positionX = Math.random() * (window.innerWidth - fireflySize);
         const positionY = Math.random() * (window.innerHeight - fireflySize);
@@ -40,17 +54,17 @@
         });
     }
 
-    function moveFirefly(){  
+    function moveFirefly() {  
         fireflyArray.forEach(j => {
             j.positionX += j.speedX;
             j.positionY += j.speedY;
 
-            if (j.positionX <= 0 || j.positionX >= window.innerWidth - fireflySize ){
+            if (j.positionX <= 0 || j.positionX >= window.innerWidth - fireflySize) {
                 j.speedX = -j.speedX;
                 j.positionX = Math.max(0, Math.min(j.positionX, window.innerWidth - fireflySize));
             }
 
-            if (j.positionY <= 0 || j.positionY >= window.innerHeight - fireflySize ){
+            if (j.positionY <= 0 || j.positionY >= window.innerHeight - fireflySize) {
                 j.speedY = -j.speedY;
                 j.positionY = Math.max(0, Math.min(j.positionY, window.innerHeight - fireflySize));
             }
@@ -58,7 +72,7 @@
             j.element.style.left = `${j.positionX}px`;
             j.element.style.top = `${j.positionY}px`;
 
-            if( Math.random() < 0.02){
+            if (Math.random() < 0.02) {
                 j.speedX = (Math.random() - 0.5) * 4; 
                 j.speedY = (Math.random() - 0.5) * 4;
             }
