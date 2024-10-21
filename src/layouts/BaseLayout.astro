@@ -39,12 +39,14 @@ const { title } = Astro.props;
             70% {opacity: 0.7;}
             100% { opacity: 1; }
         }
-        .fade-background {
+        .fade-firefly {
           animation: fadeIn 10s ease-in forwards;
         }
     </style>
 </head>
-<body class="fade-background">
-    <slot />
+<body>
+    <div class="fade-firefly">
+        <slot />
+    </div>
 </body>
 </html>
